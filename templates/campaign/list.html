@@ -1,38 +1,41 @@
-<div class="row" style="padding: 5px">
-    <div class="col-md-10">
-        <a href="" class="btn btn-primary">Filter</a>
-        <a href="" class="btn btn-default disabled">Clear Filters</a>
-        Current Filters
-        <a href="" class="btn btn-default">All Accounts</a>
-        <a href="" class="btn btn-default">All Campaigns</a>
-        <a href="" class="btn btn-default">All Ad Groups</a>
-    </div>
-    <div class="col-md-2 text-right">
-        <a class="btn btn-primary">Bookmarks</a>
-    </div>
-</div>
-
-<div class="row" style="padding: 5px">
-    <div class="col-md-9">
-        <button class="btn btn-default">Add</button>
-        <button class="btn btn-default disabled">Edit</button>
-        <button class="btn btn-success disabled">C</button>
-        <button class="btn btn-info disabled">C</button>
-        <button class="btn btn-warning disabled">C</button>
-        <button class="btn btn-default">Edit Columns</button>
-        <button class="btn btn-default">Download</button>
-        <button class="btn btn-default">Upload</button>
-        <button class="btn btn-default">C</button>
-        <button class="btn btn-default">Keywords</button>
-    </div>
-    <div class="col-md-3 text-right">
-        3/19/2015 - 3/25/2015
-        <a class="btn btn-default">Today</a>
-    </div>
-</div>
-
 <div ng-controller="CampaignCtrl">
-    <div class="ng-grid-style" ng-grid="campaignGridOptions">
+
+    <div class="row" style="padding: 5px">
+        <div class="col-md-10">
+            <a href="" class="btn btn-primary">Filter</a>
+            <a href="" class="btn btn-default disabled">Clear Filters</a>
+            Current Filters
+            <a href="" class="btn btn-default">All Accounts</a>
+            <a href="" class="btn btn-default">All Campaigns</a>
+            <a href="" class="btn btn-default">All Ad Groups</a>
+        </div>
+        <div class="col-md-2 text-right">
+            <a class="btn btn-primary">Bookmarks</a>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 5px">
+        <div class="col-md-9">
+            <button class="btn btn-default">Add</button>
+            <button class="btn btn-default disabled">Edit</button>
+            <button class="btn btn-success disabled">C</button>
+            <button class="btn btn-info disabled">C</button>
+            <button class="btn btn-warning disabled">C</button>
+            <button class="btn btn-default">Edit Columns</button>
+            <button class="btn btn-default">Download</button>
+            <button class="btn btn-default">Upload</button>
+            <button class="btn btn-default">C</button>
+            <button class="btn btn-default">Keywords</button>
+        </div>
+        <div class="col-md-3 text-right">
+            3/19/2015 - 3/25/2015
+            <a class="btn btn-default">Today</a>
+        </div>
+    </div>
+
+    <div>
+        <div class="ng-grid-style" ng-grid="campaignGridOptions">
+        </div>
     </div>
 </div>
 

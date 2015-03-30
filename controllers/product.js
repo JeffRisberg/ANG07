@@ -1,4 +1,4 @@
-myApp.controller('ProductCtrl', ['$scope', function ($scope) {
+myApp.controller('ProductCtrl', ['$scope', '$state', function ($scope, $state) {
 
     // configure the ng grid
     $scope.accountGridOptions = {
@@ -34,7 +34,7 @@ myApp.controller('ProductCtrl', ['$scope', function ($scope) {
         $scope.addName = "";
         $scope.addPrice = "";
 
-        $scope.appState = "home";
+        $state.go("productAdd");
     };
 
     $scope.totalCart = function () {

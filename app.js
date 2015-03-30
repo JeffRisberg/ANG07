@@ -4,7 +4,11 @@
 
 var myApp = angular.module('ang07', ['ui.router', 'ui.bootstrap']);
 
-myApp.config(['$stateProvider', function ($stateProvider) {
+myApp.config(function ($stateProvider, $urlRouterProvider) {
+
+    // for any unmatched url, redirect to dashboard
+    $urlRouterProvider.otherwise("/dashboard");
+
     var home = {
         name: 'home',
         url: '/',
@@ -48,4 +52,4 @@ myApp.config(['$stateProvider', function ($stateProvider) {
     $stateProvider.state(campaign);
     $stateProvider.state(campaignList);
     $stateProvider.state(campaignAdd);
-}]);
+});
