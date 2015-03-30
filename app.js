@@ -10,18 +10,42 @@ myApp.config(['$stateProvider', function ($stateProvider) {
         url: '/',
         templateUrl: 'templates/home.html'
     };
+    var product = {
+        name: 'product',
+        url: '/product/list',
+        templateUrl: 'templates/product/list.html'
+    };
     var productList = {
         name: 'productList',
-        url: '/productList',
-        templateUrl: 'templates/productList.html'
+        url: '/product/list',
+        templateUrl: 'templates/product/list.html'
     };
     var productAdd = {
         name: 'productAdd',
-        url: '/productAdd',
-        templateUrl: 'templates/productAdd.html'
+        url: '/product/add',
+        templateUrl: 'templates/product/add.html'
+    };
+    var campaign = {
+        name: 'campaign',
+        url: '/campaign/list',
+        templateUrl: 'templates/campaign/list.html'
+    };
+    var campaignList = {
+        name: 'campaignList',
+        url: '/campaign/list',
+        templateUrl: 'templates/campaign/list.html'
+    };
+    var campaignAdd = {
+        name: 'campaignAdd',
+        url: '/campaign/add',
+        templateUrl: 'templates/campaign/add.html'
     };
 
     $stateProvider.state(home);
+    $stateProvider.state(product);
     $stateProvider.state(productList);
     $stateProvider.state(productAdd);
+    $stateProvider.state(campaign);
+    $stateProvider.state(campaignList);
+    $stateProvider.state(campaignAdd);
 }]);
