@@ -34,7 +34,7 @@ myApp.controller('ProductCtrl', ['$scope', '$state', function ($scope, $state) {
         $scope.addName = "";
         $scope.addPrice = "";
 
-        $state.go("productAdd");
+        $state.go("product.add");
     };
 
     $scope.totalCart = function () {

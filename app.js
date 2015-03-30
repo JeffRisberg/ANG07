@@ -20,12 +20,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'templates/product/list.html'
     };
     var productList = {
-        name: 'productList',
+        name: 'product.list',
         url: '/product/list',
         templateUrl: 'templates/product/list.html'
     };
     var productAdd = {
-        name: 'productAdd',
+        name: 'product.add',
         url: '/product/add',
         templateUrl: 'templates/product/add.html'
     };
@@ -35,12 +35,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'templates/campaign/list.html'
     };
     var campaignList = {
-        name: 'campaignList',
+        name: 'campaign.list',
         url: '/campaign/list',
         templateUrl: 'templates/campaign/list.html'
     };
     var campaignAdd = {
-        name: 'campaignAdd',
+        name: 'campaign.add',
         url: '/campaign/add',
         templateUrl: 'templates/campaign/add.html'
     };
