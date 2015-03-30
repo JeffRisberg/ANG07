@@ -23,11 +23,6 @@ body {
     position: relative;
 }
 
-#logo {
-    background: url('../img/ang02_logo.png') #93B3F7 no-repeat;
-    height: 48px;
-}
-
 #content {
     padding: 10px 30px 30px;
     width: 250px;
