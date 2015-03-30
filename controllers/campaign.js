@@ -1,4 +1,3 @@
-
 myApp.controller("CampaignCtrl", function ($scope) {
     // configure the ng grid
     $scope.campaignGridOptions = {

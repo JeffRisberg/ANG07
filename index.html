@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html ng-app="products">
+<html ng-app="ang07">
 <head>
     <title>Home Page</title>
     <meta charset=utf-8/>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
+
     <link rel="stylesheet" href="css/styles.css">
 
     <script src="angularjs/angular.js"></script>
     <script src="angularjs/plugins/angular-ui-router.js"></script>
     <script src="angularjs/plugins/ui-bootstrap-tpls-0.12.1.js"></script>
 
+    <script src="js/jquery-1.11.2.min.js"></script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
     <script src="app.js"></script>
-    <script src="controllers.js"></script>
+    <script src="controllers/home.js"></script>
+    <script src="controllers/product.js"></script>
+    <script src="controllers/campaign.js"></script>
     <script src="services.js"></script>
 
     <style>
@@ -22,7 +29,7 @@
         }
     </style>
 </head>
-<body ng-controller="HomeController">
+<body ng-controller="HomeCtrl">
 
 <div class="mainMenu navbar navbar-fixed-top" role="navigation" style="margin-top: 52px; background: #d6d6d6">
     <div class="navbar-inner">
@@ -30,44 +37,38 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li ui-sref-active="active">
-                    <a ui-sref="dashboards">Dashboards</a>
+                    <a ui-sref="home">Home</a>
                 </li>
                 <li ui-sref-active="active">
-                    <a ui-sref="reports">Reports</a>
-                </li>
-                <li ui-sref-active="active">
-                    <a ui-sref="accountList">Accounts</a>
+                    <a ui-sref="product">Products</a>
                 </li>
                 <li ui-sref-active="active">
                     <a ui-sref="campaignList">Campaigns</a>
                 </li>
-                <li ui-sref-active="active">
-                    <a ui-sref="adGroupList">Ad Groups</a>
-                </li>
-                <li ui-sref-active="active">
-                    <a ui-sref="keywordList">Keywords</a>
-                </li>
-                <li ui-sref-active="active">
-                    <a ui-sref="adsList">Ads</a>
-                </li>
-                <li ui-sref-active="active">
-                    <a ui-sref="productsList">Products</a>
-                </li>
-                <li ui-sref-active="active">
-                    <a ui-sref="displayList">Display</a>
-                </li>
-                <li ui-sref-active="active">
-                    <a ui-sref="negativeList">Negatives</a>
-                </li>
-                <li ui-sref-active="active">
-                    <a ui-sref="extensionList">Extensions</a>
-                </li>
-                <li ui-sref-active="active">
-                    <a ui-sref="optimize">Optimize</a>
-                </li>
             </ul>
         </div>
         <!--/.navbar-collapse -->
+    </div>
+</div>
+
+<div class="upperMenu navbar navbar-fixed-top" style="margin-top: 0px; background: #d6d6d6">
+    <div class="navbar-inner">
+
+        <ul class="nav navbar-nav" style="height: 42px">
+            <img src="img/ang07_logo.png" height="38" style="padding-left: 20px; padding-top: 10px;"/>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" style="background: #e8e8e8; color: #000; border: 1px solid #a0a0a0; margin-top: 14px; padding-top: 0px; padding-bottom: 5px; height: 25px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    qa-edit
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" >
+                    <li><a href="#">Admin</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </div>
 

@@ -1,24 +1,24 @@
 /**
- * Application is called Products
+ * Application is called Ang07
  */
 
-var myApp = angular.module('products', ['ui.router', 'ui.bootstrap']);
+var myApp = angular.module('ang07', ['ui.router', 'ui.bootstrap']);
 
 myApp.config(['$stateProvider', function ($stateProvider) {
     var home = {
         name: 'home',
         url: '/',
-        templateUrl: 'home.html'
+        templateUrl: 'templates/home.html'
     };
     var productList = {
         name: 'productList',
         url: '/productList',
-        templateUrl: 'productList.html'
+        templateUrl: 'templates/productList.html'
     };
     var productAdd = {
         name: 'productAdd',
         url: '/productAdd',
-        templateUrl: 'productAdd.html'
+        templateUrl: 'templates/productAdd.html'
     };
 
     $stateProvider.state(home);
