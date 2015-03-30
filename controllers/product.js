@@ -1,7 +1,15 @@
 myApp.controller('ProductCtrl', ['$scope', '$state', function ($scope, $state) {
 
+    $scope.discount = 0.0;
+
+    $scope.products = [
+        {title: 'Paint pots', quantity: 8, price: 3.95},
+        {title: 'Polka dots', quantity: 17, price: 12.95},
+        {title: 'Pebbles', quantity: 5, price: 6.95}
+    ];
+
     // configure the ng grid
-    $scope.accountGridOptions = {
+    $scope.productsGridOptions = {
         data: 'products',
         columnDefs: [
             {field: 'id', displayName: 'Id'},
@@ -15,22 +23,12 @@ myApp.controller('ProductCtrl', ['$scope', '$state', function ($scope, $state) {
         ]
     };
 
-    $scope.appState = "home";
-
-    $scope.discount = 0.0;
-
-    $scope.items = [
-        {title: 'Paint pots', quantity: 8, price: 3.95},
-        {title: 'Polka dots', quantity: 17, price: 12.95},
-        {title: 'Pebbles', quantity: 5, price: 6.95}
-    ];
-
     $scope.remove = function (index) {
-        $scope.items.splice(index, 1);
+        $scope.products.splice(index, 1);
     };
 
     $scope.addItem = function () {
-        $scope.items.push({title: $scope.addName, quantity: 1, price: $scope.addPrice});
+        $scope.products.push({title: $scope.addName, quantity: 1, price: $scope.addPrice});
         $scope.addName = "";
         $scope.addPrice = "";
 
@@ -39,8 +37,8 @@ myApp.controller('ProductCtrl', ['$scope', '$state', function ($scope, $state) {
 
     $scope.totalCart = function () {
         var total = 0;
-        for (var i = 0, len = $scope.items.length; i < len; i++) {
-            total = total + $scope.items[i].price * $scope.items[i].quantity;
+        for (var i = 0, len = $scope.products.length; i < len; i++) {
+            total = total + $scope.products[i].price * $scope.products[i].quantity;
         }
         return total;
     };

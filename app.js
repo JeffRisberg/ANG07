@@ -2,7 +2,7 @@
  * Application is called Ang07
  */
 
-var myApp = angular.module('ang07', ['ui.router', 'ui.bootstrap']);
+var myApp = angular.module('ang07', ['ui.router', 'ui.bootstrap', 'ngGrid']);
 
 myApp.config(function ($stateProvider, $urlRouterProvider) {
 
