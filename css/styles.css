@@ -101,6 +101,23 @@ h1 {
     text-align: right
 }
 
+/** Wijmo tables */
+.wj-cell {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font:  11px/13px tahoma, arial, verdana, sans-serif;
+    line-height: 13px;
+}
+
+.wj-header {
+    background: #a3b6c6;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font: bold 11px/13px tahoma, arial, verdana, sans-serif;
+    line-height: 13px;
+    font-weight: bold !important;
+}
+
 /** Kendo UI Tables */
 .k-grid-header tr th {
     background: #a3b6c6;

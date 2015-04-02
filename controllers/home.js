@@ -1,4 +1,4 @@
-myApp.controller('HomeCtrl', ['$scope', function ($scope) {
+myApp.controller('HomeCtrl', ['$scope', '$state', function ($scope, $state) {
 
     $scope.charts = [
         {name: 'Total', impressions: 8654, clicks: 834},

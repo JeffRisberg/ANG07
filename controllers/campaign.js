@@ -1,4 +1,4 @@
-myApp.controller("CampaignCtrl", function ($scope) {
+myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) {
 
     $scope.campaigns = [
         {id: 1, name: 'Holiday promotion', bidPolicy: 'fixed', impressions: 3465, clicks: 667, cost: 56.67, revenue: 153.2},
@@ -28,4 +28,4 @@ myApp.controller("CampaignCtrl", function ($scope) {
             {field: 'revenue', displayName: 'Revenue', cellClass: 'ngAlignRight', cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">${{row.entity[col.field]}}</div>'}
         ]
     };
-});
+}]);

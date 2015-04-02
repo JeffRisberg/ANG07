@@ -16,52 +16,73 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     };
     var account = {
         name: 'account',
-        url: '/account/list',
+        url: '/account',
         templateUrl: 'templates/account/list.html'
     };
     var accountList = {
         name: 'account.list',
-        url: '/account/list',
+        url: '/list',
         templateUrl: 'templates/account/list.html'
+    };
+    var accountShow = {
+        name: 'account.show',
+        url: '/show',
+        templateUrl: 'templates/account/show.html'
     };
     var accountAdd = {
         name: 'account.add',
-        url: '/account/add',
+        url: '/add',
         templateUrl: 'templates/account/add.html'
     };
     var campaign = {
         name: 'campaign',
-        url: '/campaign/list',
+        url: '/campaign',
         templateUrl: 'templates/campaign/list.html'
     };
     var campaignList = {
         name: 'campaign.list',
-        url: '/campaign/list',
+        url: '/list',
         templateUrl: 'templates/campaign/list.html'
-    };
-    var campaignAdd = {
-        name: 'campaign.add',
-        url: '/campaign/add',
-        templateUrl: 'templates/campaign/add.html'
     };
     var campaignShow = {
         name: 'campaign.show',
-        url: '/campaign/show',
+        url: '/show',
         templateUrl: 'templates/campaign/show.html'
     };
-    var adGroupList = {
+    var campaignAdd = {
+        name: 'campaign.add',
+        url: '/add',
+        templateUrl: 'templates/campaign/add.html'
+    };
+    var adGroup = {
         name: 'adGroup',
-        url: '/adGroup/list',
+        url: '/adGroup',
         templateUrl: 'templates/adGroup/list.html'
+    };
+    var adGroupList = {
+        name: 'adGroup.list',
+        url: '/list',
+        templateUrl: 'templates/adGroup/list.html'
+    };
+    var adGroupShow = {
+        name: 'adGroup.show',
+        url: '/show',
+        templateUrl: 'templates/adGroup/show.html'
     };
 
     $stateProvider.state(home);
+
     $stateProvider.state(account);
     $stateProvider.state(accountList);
+    $stateProvider.state(accountShow);
     $stateProvider.state(accountAdd);
+
     $stateProvider.state(campaign);
     $stateProvider.state(campaignList);
-    $stateProvider.state(campaignAdd);
     $stateProvider.state(campaignShow);
+    $stateProvider.state(campaignAdd);
+
+    $stateProvider.state(adGroup);
     $stateProvider.state(adGroupList);
+    $stateProvider.state(adGroupShow);
 });

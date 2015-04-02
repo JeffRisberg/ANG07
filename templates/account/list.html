@@ -1,8 +1,8 @@
-<div ng-controller="ProductCtrl">
+<div ng-controller="AccountCtrl">
 
     <div>
-        <button class="btn btn-primary" ng-click="addItem()">
-            Add Item
+        <button class="btn btn-primary" ng-click="addAccount()">
+            Add Account
         </button>
     </div>
     <span class="search input-prepend" ng-class="{'input-append':search}">
@@ -13,31 +13,16 @@
     </span>
 
     <table class="table table-striped">
-        <tr ng-repeat="item in items | filter : search" ng-class="{'muted':isTemp($index)}">
-            <td>{{item.title}}</td>
+        <tr ng-repeat="item in accounts | filter : search" ng-class="{'muted':isTemp($index)}">
+            <td>{{account.title}}</td>
             <td><input ng-model='item.quantity'></td>
-            <td style="text-align: right">{{item.price | currency}}</td>
-            <td style="text-align: right">{{item.price * item.quantity | currency}}</td>
+            <td style="text-align: right">{{account.price | currency}}</td>
+            <td style="text-align: right">{{account.price * account.quantity | currency}}</td>
             <td>
                 <button class="btn btn-danger btn-mini" ng-click="remove($index)">
                     <i class="glyphicon glyphicon-trash glyphicon-white"></i>
                 </button>
             </td>
-        </tr>
-    </table>
-
-    <table>
-        <tr>
-            <td>Total:</td>
-            <td style="text-align:right">{{totalCart() | currency}}</td>
-        </tr>
-        <tr>
-            <td>Discount:</td>
-            <td style="text-align:right">{{discount | currency}}</td>
-        </tr>
-        <tr>
-            <td>Subtotal:</td>
-            <td style="text-align:right">{{subtotal() | currency}}</td>
         </tr>
     </table>
 </div>
