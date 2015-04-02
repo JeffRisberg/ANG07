@@ -1,0 +1,27 @@
+<style>
+    #adGroupList {
+        height: 300px;
+        background-color: white;
+        box-shadow: 4px 4px 10px 0px rgba(50, 50, 50, 0.75);
+        margin-bottom: 12px;
+    }
+</style>
+
+<div ng-controller="AdGroupCtrl">
+
+    <div>
+        <wj-flex-grid id="adGroupList" items-source="adGroupData">
+        </wj-flex-grid>
+    </div>
+</div>
+
+<div style="position: absolute; bottom: 0px; width: 100%">
+    <div class="row" style="background: #a3b6c6; padding: 5px;">
+        <div class="col-md-6">
+            footer left
+        </div>
+        <div class="col-md-6 text-right">
+            footer right
+        </div>
+    </div>
+</div>

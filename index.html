@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
 
     <link rel="stylesheet" href="css/ng-grid.css" />
+    <link rel="stylesheet" href="css/wijmo.css" />
 
     <link rel="stylesheet" href="css/styles.css">
 
@@ -16,14 +17,19 @@
     <script src="angularjs/plugins/ui-bootstrap-tpls-0.12.1.js"></script>
 
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/ng-grid-2.0.13.debug.js"></script>
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
+    <script src="js/ng-grid-2.0.13.debug.js"></script>
+    <script src="js/wijmo.min.js"></script>
+    <script src="js/wijmo.grid.min.js"></script>
+    <script src="js/wijmo.angular.min.js"></script>
+
     <script src="app.js"></script>
     <script src="controllers/home.js"></script>
-    <script src="controllers/product.js"></script>
+    <script src="controllers/account.js"></script>
     <script src="controllers/campaign.js"></script>
+    <script src="controllers/adGroup.js"></script>
     <script src="services.js"></script>
 
     <style>
@@ -43,10 +49,13 @@
                     <a ui-sref="home">Home</a>
                 </li>
                 <li ui-sref-active="active">
-                    <a ui-sref="product">Products</a>
+                    <a ui-sref="account">Accounts</a>
                 </li>
                 <li ui-sref-active="active">
                     <a ui-sref="campaign">Campaigns</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="adGroup">Ad Groups</a>
                 </li>
             </ul>
         </div>

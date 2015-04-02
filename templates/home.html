@@ -1,4 +1,19 @@
 <div ng-controller="HomeCtrl">
+
+    <table class="table table-striped">
+        <tr ng-repeat="chart in charts" ng-class="{'muted':isTemp($index)}">
+            <td>{{chart.name}}</td>
+            <td><input ng-model='chart.impressions'></td>
+            <td><input ng-model='chart.clicks'></td>
+            <td style="text-align: right">{{100.0 * chart.clicks / chart.impressions}}</td>
+            <td>
+                <button class="btn btn-danger btn-mini" ng-click="remove($index)">
+                    <i class="glyphicon glyphicon-trash glyphicon-white"></i>
+                </button>
+            </td>
+        </tr>
+    </table>
+
 </div>
 
 <div style="position: absolute; bottom: 0px; width: 100%">
