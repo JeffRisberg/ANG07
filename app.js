@@ -25,10 +25,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
         url: '/list',
         templateUrl: 'modules/account/templates/list.html'
     };
-    var accountShow = {
-        name: 'account.show',
-        url: '/show',
-        templateUrl: 'modules/account/templates/show.html'
+    var accountEdit = {
+        name: 'account.edit',
+        url: '/edit',
+        templateUrl: 'modules/account/templates/edit.html'
     };
     var accountAdd = {
         name: 'account.add',
@@ -46,10 +46,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
         url: '/list',
         templateUrl: 'modules/campaign/templates/list.html'
     };
-    var campaignShow = {
-        name: 'campaign.show',
-        url: '/show',
-        templateUrl: 'modules/campaign/templates/show.html'
+    var campaignEdit = {
+        name: 'campaign.edit',
+        url: '/edit',
+        templateUrl: 'modules/campaign/templates/edit.html'
     };
     var campaignAdd = {
         name: 'campaign.add',
@@ -67,10 +67,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
         url: '/list',
         templateUrl: 'modules/adGroup/templates/list.html'
     };
-    var adGroupShow = {
-        name: 'adGroup.show',
-        url: '/show',
-        templateUrl: 'modules/adGroup/templates/show.html'
+    var adGroupEdit = {
+        name: 'adGroup.edit',
+        url: '/edit',
+        templateUrl: 'modules/adGroup/templates/edit.html'
     };
     var adGroupAdd = {
         name: 'adGroup.add',
@@ -82,16 +82,16 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider.state(account);
     $stateProvider.state(accountList);
-    $stateProvider.state(accountShow);
+    $stateProvider.state(accountEdit);
     $stateProvider.state(accountAdd);
 
     $stateProvider.state(campaign);
     $stateProvider.state(campaignList);
-    $stateProvider.state(campaignShow);
+    $stateProvider.state(campaignEdit);
     $stateProvider.state(campaignAdd);
 
     $stateProvider.state(adGroup);
     $stateProvider.state(adGroupList);
-    $stateProvider.state(adGroupShow);
+    $stateProvider.state(adGroupEdit);
     $stateProvider.state(adGroupAdd);
 });

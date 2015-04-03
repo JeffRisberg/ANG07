@@ -17,7 +17,7 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
         var revenue = cost * 10.0 * Math.random();
 
         dataList.push({
-            id: i,
+            id: i + 1,
             account: account,
             publisher: publisher,
             name: name,
@@ -41,7 +41,7 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
         columnDefs: [
             {field: 'id', displayName: 'Id'},
             {field: 'name', displayName: 'Name',
-                cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight"><a ng-click="showCampaign(row.entity.id)">{{row.entity[col.field]}}</a></div>'},
+                cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight"><a ng-click="editCampaign(row.entity.id)">{{row.entity[col.field]}}</a></div>'},
             {field: 'publisher', displayName: 'Publisher'},
             {field: 'startDate', displayName: 'Start Date'},
             {field: 'active', displayName: 'Status'},
@@ -56,7 +56,7 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
         ]
     };
 
-    $scope.showCampaign = function (id) {
+    $scope.editCampaign = function (id) {
         $scope.campaign = null;
 
         // Find the campaign in the collection
@@ -70,7 +70,7 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
         }
 
         if ($scope.campaign !== null) {
-            $state.go("campaign.show");
+            $state.go("campaign.edit");
         }
     };
 

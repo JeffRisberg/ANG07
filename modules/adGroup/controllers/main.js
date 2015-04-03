@@ -19,7 +19,7 @@ myApp.controller('AdGroupCtrl', ['$scope', '$state', function ($scope, $state) {
         var revenue = cost * 10.0 * Math.random();
 
         dataList.push({
-            id: i,
+            id: i + 1,
             account: account,
             publisher: publisher,
             campaign: campaign,
@@ -38,7 +38,7 @@ myApp.controller('AdGroupCtrl', ['$scope', '$state', function ($scope, $state) {
     $scope.adGroupCollection = new wijmo.collections.CollectionView(dataList);
     $scope.adGroupCollection.pageSize = 10;
 
-    $scope.showAdGroup = function (id) {
+    $scope.editAdGroup = function (id) {
         $scope.adGroup = null;
 
         // Find the adGroup in the collection
@@ -52,9 +52,7 @@ myApp.controller('AdGroupCtrl', ['$scope', '$state', function ($scope, $state) {
         }
 
         if ($scope.adGroup !== null) {
-            console.log($scope.adGroup);
-            console.log($scope);
-            $state.go("adGroup.show");
+            $state.go("adGroup.edit");
         }
     };
 }]);
