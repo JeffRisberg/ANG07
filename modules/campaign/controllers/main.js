@@ -43,11 +43,16 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
                     fields: {
                         id: { type: "number" },
                         account: { type: "string" },
-                        name: { type: "string" },
                         publisher: { type: "string" },
+                        name: { type: "string" },
+                        active: { type: "boolean" },
+                        startDate: { type: "date" },
                         impressions: { type: "number" },
                         clicks: { type: "number" },
-                        cost: { type: "number" }
+                        ctr: { type: "number" },
+                        cpc: { type: "number" },
+                        cost: { type: "number" },
+                        revenue: { type: "number" }
                     }
                 }
             },
@@ -61,6 +66,10 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
                 field: "id",
                 title: "Id",
                 filterable: false
+            },
+            {
+                field: "account",
+                title: "Account"
             },
             {
                 field: "name",
