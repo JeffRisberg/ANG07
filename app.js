@@ -6,68 +6,76 @@ var myApp = angular.module('ang07', ['ui.router', 'ui.bootstrap', 'ngGrid', 'wj'
 
 myApp.config(function ($stateProvider, $urlRouterProvider) {
 
-    // for any unmatched url, redirect to dashboard
-    $urlRouterProvider.otherwise("/dashboard");
+    // for any unmatched url, redirect to home
+    $urlRouterProvider.otherwise("/");
 
     var home = {
         name: 'home',
         url: '/',
-        templateUrl: 'templates/home.html'
+        templateUrl: 'modules/home/template.html'
     };
+
     var account = {
         name: 'account',
         url: '/account',
-        templateUrl: 'templates/account/list.html'
+        templateUrl: 'modules/account/templates/main.html'
     };
     var accountList = {
         name: 'account.list',
         url: '/list',
-        templateUrl: 'templates/account/list.html'
+        templateUrl: 'modules/account/templates/list.html'
     };
     var accountShow = {
         name: 'account.show',
         url: '/show',
-        templateUrl: 'templates/account/show.html'
+        templateUrl: 'modules/account/templates/show.html'
     };
     var accountAdd = {
         name: 'account.add',
         url: '/add',
-        templateUrl: 'templates/account/add.html'
+        templateUrl: 'modules/account/templates/add.html'
     };
+
     var campaign = {
         name: 'campaign',
         url: '/campaign',
-        templateUrl: 'templates/campaign/list.html'
+        templateUrl: 'modules/campaign/templates/main.html'
     };
     var campaignList = {
         name: 'campaign.list',
         url: '/list',
-        templateUrl: 'templates/campaign/list.html'
+        templateUrl: 'modules/campaign/templates/list.html'
     };
     var campaignShow = {
         name: 'campaign.show',
         url: '/show',
-        templateUrl: 'templates/campaign/show.html'
+        templateUrl: 'modules/campaign/templates/show.html'
     };
     var campaignAdd = {
         name: 'campaign.add',
         url: '/add',
-        templateUrl: 'templates/campaign/add.html'
+        templateUrl: 'modules/campaign/templates/add.html'
     };
+
     var adGroup = {
         name: 'adGroup',
         url: '/adGroup',
-        templateUrl: 'templates/adGroup/list.html'
+        templateUrl: 'modules/adGroup/templates/main.html'
     };
     var adGroupList = {
         name: 'adGroup.list',
         url: '/list',
-        templateUrl: 'templates/adGroup/list.html'
+        templateUrl: 'modules/adGroup/templates/list.html'
     };
     var adGroupShow = {
         name: 'adGroup.show',
         url: '/show',
-        templateUrl: 'templates/adGroup/show.html'
+        templateUrl: 'modules/adGroup/templates/show.html'
+    };
+    var adGroupAdd = {
+        name: 'adGroup.add',
+        url: '/add',
+        templateUrl: 'modules/adGroup/templates/add.html'
     };
 
     $stateProvider.state(home);
@@ -85,4 +93,5 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state(adGroup);
     $stateProvider.state(adGroupList);
     $stateProvider.state(adGroupShow);
+    $stateProvider.state(adGroupAdd);
 });

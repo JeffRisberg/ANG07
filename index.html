@@ -26,10 +26,10 @@
     <script src="js/wijmo.angular.min.js"></script>
 
     <script src="app.js"></script>
-    <script src="controllers/home.js"></script>
-    <script src="controllers/account.js"></script>
-    <script src="controllers/campaign.js"></script>
-    <script src="controllers/adGroup.js"></script>
+    <script src="modules/home/controller.js"></script>
+    <script src="modules/account/controllers/main.js"></script>
+    <script src="modules/campaign/controllers/main.js"></script>
+    <script src="modules/adGroup/controllers/main.js"></script>
     <script src="services.js"></script>
 
     <style>
@@ -49,13 +49,13 @@
                     <a ui-sref="home">Home</a>
                 </li>
                 <li ui-sref-active="active">
-                    <a ui-sref="account">Accounts</a>
+                    <a ui-sref="account.list">Accounts</a>
                 </li>
                 <li ui-sref-active="active">
-                    <a ui-sref="campaign">Campaigns</a>
+                    <a ui-sref="campaign.list">Campaigns</a>
                 </li>
                 <li ui-sref-active="active">
-                    <a ui-sref="adGroup">Ad Groups</a>
+                    <a ui-sref="adGroup.list">Ad Groups</a>
                 </li>
             </ul>
         </div>

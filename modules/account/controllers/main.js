@@ -1,4 +1,4 @@
-myApp.controller('AccountCtrl', ['$scope', '$state', function ($scope, $state) {
+myApp.controller('AccountCtrl', ['$scope', '$rootScope', '$state', function ($scope, $rootScope, $state) {
 
     $scope.discount = 0.0;
 
@@ -32,7 +32,6 @@ myApp.controller('AccountCtrl', ['$scope', '$state', function ($scope, $state) {
         $scope.addName = "";
         $scope.addPrice = "";
 
-        console.log("about to go to add screen");
         $state.go("account.add");
     };
 }]);

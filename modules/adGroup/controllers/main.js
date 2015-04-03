@@ -1,4 +1,4 @@
-myApp.controller('AdGroupCtrl', ['$scope', '$state', function ($scope, $state) {
+myApp.controller('AdGroupCtrl', ['$scope', '$rootScope', '$state', function ($scope, $rootScope, $state) {
 
     var accounts = ['Google', 'Google', 'Bing'];
     var campaigns = "Travel:Cruises,Travel:Hotel,Travel:Other,Car:Ford,Car:Chevrolet,Car:Kia,Car:Honda,Fall Promotion,Winter Promotion".split(',');
@@ -12,9 +12,9 @@ myApp.controller('AdGroupCtrl', ['$scope', '$state', function ($scope, $state) {
         var campaign = campaigns[Math.floor(Math.random() * campaigns.length)];
         var name = names[i % names.length];
 
-        var impressions = Math.random() * 10000;
+        var impressions = Math.floor(Math.random() * 10000);
         var ctr = 0.05 + 0.05 * Math.random();
-        var clicks = impressions * ctr;
+        var clicks = Math.floor(impressions * ctr);
         var cost = Math.random() * 45.0;
         var revenue = cost * 10.0 * Math.random();
 
@@ -39,19 +39,19 @@ myApp.controller('AdGroupCtrl', ['$scope', '$state', function ($scope, $state) {
     $scope.adGroupCollection.pageSize = 10;
 
     $scope.showAdGroup = function (id) {
-        $scope.adGroup = null;
+        $rootScope.adGroup = null;
 
+        // Find the adGroup in the collection
         for (var i = 0; i < $scope.adGroupCollection.items.length; i++) {
             var adGroup = $scope.adGroupCollection.items[i];
 
             if (adGroup.id == id) {
-                $scope.adGroup = adGroup;
+                $rootScope.adGroup = adGroup;
                 break;
             }
         }
 
-        if ($scope.adGroup !== null) {
-            console.log("about to go to show screen");
+        if ($rootScope.adGroup !== null) {
             $state.go("adGroup.show");
         }
     };
