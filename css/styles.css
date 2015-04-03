@@ -78,7 +78,8 @@ h1 {
     line-height: 13px;
 }
 
-/** ng-Grid tables */
+
+/** NG-Grid tables */
 .ng-grid-style {
     padding-top: 9px;
     padding-bottom: 7px;
@@ -101,6 +102,7 @@ h1 {
     text-align: right
 }
 
+
 /** Wijmo tables */
 .wj-cell {
     padding-top: 8px;
@@ -117,6 +119,7 @@ h1 {
     line-height: 13px;
     font-weight: bold !important;
 }
+
 
 /** Kendo UI Tables */
 .k-grid-header tr th {
