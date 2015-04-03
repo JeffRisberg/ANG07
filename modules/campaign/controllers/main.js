@@ -37,9 +37,11 @@ myApp.controller("CampaignCtrl", ['$scope', '$rootScope', '$state', function ($s
     // configure the ng grid
     $scope.campaignGridOptions = {
         data: 'campaigns',
+        enablePaging: true,
         columnDefs: [
             {field: 'id', displayName: 'Id'},
-            {field: 'name', displayName: 'Name'},
+            {field: 'name', displayName: 'Name',
+                cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight"><a ng-click="showCampaign(row.entity.id)">{{row.entity[col.field]}}</a></div>'},
             {field: 'publisher', displayName: 'Publisher'},
             {field: 'startDate', displayName: 'Start Date'},
             {field: 'active', displayName: 'Status'},
@@ -52,6 +54,25 @@ myApp.controller("CampaignCtrl", ['$scope', '$rootScope', '$state', function ($s
             {field: 'cost', displayName: 'Cost', cellClass: 'ngAlignRight', cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">$ {{row.entity[col.field]}}</div>'},
             {field: 'revenue', displayName: 'Revenue', cellClass: 'ngAlignRight', cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">$ {{row.entity[col.field]}}</div>'}
         ]
+    };
+
+    $scope.showCampaign = function (id) {
+        console.log("show Campaign " + id);
+        $rootScope.campaign = null;
+
+        // Find the campaign in the collection
+        for (var i = 0; i < $scope.campaigns.length; i++) {
+            var campaign = $scope.campaigns[i];
+
+            if (campaign.id == id) {
+                $rootScope.campaign = campaign;
+                break;
+            }
+        }
+
+        if ($rootScope.campaign !== null) {
+            $state.go("campaign.show");
+        }
     };
 
     $scope.addCampaign = function () {
