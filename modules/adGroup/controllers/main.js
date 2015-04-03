@@ -1,4 +1,4 @@
-myApp.controller('AdGroupCtrl', ['$scope', '$rootScope', '$state', function ($scope, $rootScope, $state) {
+myApp.controller('AdGroupCtrl', ['$scope', '$state', function ($scope, $state) {
 
     var accounts = ['Google', 'Google', 'Bing'];
     var campaigns = "Travel:Cruises,Travel:Hotel,Travel:Other,Car:Ford,Car:Chevrolet,Car:Kia,Car:Honda,Fall Promotion,Winter Promotion".split(',');
@@ -39,19 +39,21 @@ myApp.controller('AdGroupCtrl', ['$scope', '$rootScope', '$state', function ($sc
     $scope.adGroupCollection.pageSize = 10;
 
     $scope.showAdGroup = function (id) {
-        $rootScope.adGroup = null;
+        $scope.adGroup = null;
 
         // Find the adGroup in the collection
         for (var i = 0; i < $scope.adGroupCollection.items.length; i++) {
             var adGroup = $scope.adGroupCollection.items[i];
 
             if (adGroup.id == id) {
-                $rootScope.adGroup = adGroup;
+                $scope.adGroup = adGroup;
                 break;
             }
         }
 
-        if ($rootScope.adGroup !== null) {
+        if ($scope.adGroup !== null) {
+            console.log($scope.adGroup);
+            console.log($scope);
             $state.go("adGroup.show");
         }
     };

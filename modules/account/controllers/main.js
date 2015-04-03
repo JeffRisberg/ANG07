@@ -1,4 +1,4 @@
-myApp.controller('AccountCtrl', ['$scope', '$rootScope', '$state', function ($scope, $rootScope, $state) {
+myApp.controller('AccountCtrl', ['$scope', '$state', function ($scope, $state) {
 
     $scope.discount = 0.0;
 

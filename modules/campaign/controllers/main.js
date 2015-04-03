@@ -1,4 +1,4 @@
-myApp.controller("CampaignCtrl", ['$scope', '$rootScope', '$state', function ($scope, $rootScope, $state) {
+myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) {
 
     var accounts = ['Google', 'Google', 'Bing'];
     var names = "Travel:Cruises,Travel:Hotel,Travel:Other,Car:Ford,Car:Chevrolet,Car:Kia,Car:Honda,Fall Promotion,Winter Promotion".split(',');
@@ -57,20 +57,19 @@ myApp.controller("CampaignCtrl", ['$scope', '$rootScope', '$state', function ($s
     };
 
     $scope.showCampaign = function (id) {
-        console.log("show Campaign " + id);
-        $rootScope.campaign = null;
+        $scope.campaign = null;
 
         // Find the campaign in the collection
         for (var i = 0; i < $scope.campaigns.length; i++) {
             var campaign = $scope.campaigns[i];
 
             if (campaign.id == id) {
-                $rootScope.campaign = campaign;
+                $scope.campaign = campaign;
                 break;
             }
         }
 
-        if ($rootScope.campaign !== null) {
+        if ($scope.campaign !== null) {
             $state.go("campaign.show");
         }
     };

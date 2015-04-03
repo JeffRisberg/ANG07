@@ -1,45 +1,42 @@
-<div ng-controller="AdGroupCtrl">
+<div style="margin-left: 15px">
+    <h3>AdGroup Detail</h3>
 
-    <div style="margin-left: 15px">
-        <h3>AdGroup Detail</h3>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>{{adGroup.name}}</td>
+        </tr>
+        <tr>
+            <td>Publisher:</td>
+            <td>{{adGroup.publisher}}</td>
+        </tr>
+        <tr>
+            <td>Campaign:</td>
+            <td>{{adGroup.campaign}}</td>
+        </tr>
+        <tr>
+            <td>Impressions:</td>
+            <td>{{adGroup.impressions}}</td>
+        </tr>
+        <tr>
+            <td>Clicks:</td>
+            <td>{{adGroup.clicks | number}}</td>
+        </tr>
+        <tr>
+            <td>Ctr:</td>
+            <td>{{adGroup.ctr}}</td>
+        </tr>
+        <tr>
+            <td>Cost:</td>
+            <td>{{adGroup.cost}}</td>
+        </tr>
+        <tr>
+            <td>Revenue:</td>
+            <td>{{adGroup.revenue}}</td>
+        </tr>
+    </table>
 
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td>{{adGroup.name}}</td>
-            </tr>
-            <tr>
-                <td>Publisher:</td>
-                <td>{{adGroup.publisher}}</td>
-            </tr>
-            <tr>
-                <td>Campaign:</td>
-                <td>{{adGroup.campaign}}</td>
-            </tr>
-            <tr>
-                <td>Impressions:</td>
-                <td>{{adGroup.impressions}}</td>
-            </tr>
-            <tr>
-                <td>Clicks:</td>
-                <td>{{adGroup.clicks | number}}</td>
-            </tr>
-            <tr>
-                <td>Ctr:</td>
-                <td>{{adGroup.ctr}}</td>
-            </tr>
-            <tr>
-                <td>Cost:</td>
-                <td>{{adGroup.cost}}</td>
-            </tr>
-            <tr>
-                <td>Revenue:</td>
-                <td>{{adGroup.revenue}}</td>
-            </tr>
-        </table>
-
-        <button class="btn btn-primary">
-            Back
-        </button>
-    </div>
+    <button class="btn btn-primary">
+        Back
+    </button>
 </div>

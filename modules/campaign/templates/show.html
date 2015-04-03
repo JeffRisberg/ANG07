@@ -1,37 +1,42 @@
-<div ng-controller="CampaignCtrl">
+<div style="margin-left: 15px">
+    <h3>Campaign Detail</h3>
 
-    <div style="margin-left: 15px">
-        <h3>Campaign Detail</h3>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>{{campaign.name}}</td>
+        </tr>
+        <tr>
+            <td>Labels:</td>
+            <td>{{campaign.labels}}</td>
+        </tr>
+        <tr>
+            <td>Bid Policy:</td>
+            <td>{{campaign.bidPolicy}}</td>
+        </tr>
+        <tr>
+            <td>Impressions:</td>
+            <td>{{campaign.impressions}}</td>
+        </tr>
+        <tr>
+            <td>Clicks:</td>
+            <td>{{campaign.clicks | number}}</td>
+        </tr>
+        <tr>
+            <td>Ctr:</td>
+            <td>{{campaign.ctr}}</td>
+        </tr>
+        <tr>
+            <td>Cost:</td>
+            <td>{{campaign.cost}}</td>
+        </tr>
+        <tr>
+            <td>Revenue:</td>
+            <td>{{campaign.revenue}}</td>
+        </tr>
+    </table>
 
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td>{{campaign.name}}</td>
-            </tr>
-            <tr>
-                <td>Impressions:</td>
-                <td>{{campaign.impressions}}</td>
-            </tr>
-            <tr>
-                <td>Clicks:</td>
-                <td>{{campaign.clicks | number}}</td>
-            </tr>
-            <tr>
-                <td>Ctr:</td>
-                <td>{{campaign.ctr}}</td>
-            </tr>
-            <tr>
-                <td>Cost:</td>
-                <td>{{campaign.cost}}</td>
-            </tr>
-            <tr>
-                <td>Revenue:</td>
-                <td>{{campaign.revenue}}</td>
-            </tr>
-        </table>
-
-        <button class="btn btn-primary">
-            Back
-        </button>
-    </div>
+    <button class="btn btn-primary">
+        Back
+    </button>
 </div>
