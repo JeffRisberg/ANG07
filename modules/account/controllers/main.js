@@ -44,7 +44,7 @@ myApp.controller('AccountCtrl', ['$scope', '$state', function ($scope, $state) {
     var currencyCT =
         '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">{{row.entity[col.field] | currency}}</div>';
     var editObjectCT =
-        '<div class="ngCellText ng-scope col8 colt8 ngAlignRight"><a ng-click="editAccount(1)">{{row.entity[col.field]}}</a></div>';
+        '<div class="ngCellText ng-scope col8 colt8 ngAlignRight"><a ng-click="editAccount(row.entity[\'id\'])">{{row.entity[col.field]}}</a></div>';
 
     // configure the ng grid
     $scope.accountGridOptions = {

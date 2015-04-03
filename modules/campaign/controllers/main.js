@@ -34,25 +34,83 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
 
     $scope.campaigns = dataList;
 
-    // configure the ng grid
-    $scope.campaignGridOptions = {
-        data: 'campaigns',
-        enablePaging: true,
-        columnDefs: [
-            {field: 'id', displayName: 'Id'},
-            {field: 'name', displayName: 'Name',
-                cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight"><a ng-click="editCampaign(row.entity.id)">{{row.entity[col.field]}}</a></div>'},
-            {field: 'publisher', displayName: 'Publisher'},
-            {field: 'startDate', displayName: 'Start Date'},
-            {field: 'active', displayName: 'Status'},
-            {field: 'labels', displayName: 'Labels'},
-            {field: 'bidPolicy', displayName: 'Bid Policy'},
-            {field: 'impressions', displayName: 'Impressions', cellClass: 'ngAlignRight'},
-            {field: 'clicks', displayName: 'Clicks', cellClass: 'ngAlignRight'},
-            {field: 'ctr', displayName: 'CTR', cellClass: 'ngAlignRight', cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">{{row.entity[col.field]}} %</div>'},
-            {field: 'cpc', displayName: 'CPC', cellClass: 'ngAlignRight', cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">$ {{row.entity[col.field]}}</div>'},
-            {field: 'cost', displayName: 'Cost', cellClass: 'ngAlignRight', cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">$ {{row.entity[col.field]}}</div>'},
-            {field: 'revenue', displayName: 'Revenue', cellClass: 'ngAlignRight', cellTemplate: '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">$ {{row.entity[col.field]}}</div>'}
+    $scope.mainGridOptions = {
+        dataSource: {
+            data: dataList,
+            schema: {
+                model: {
+                    id: "id",
+                    fields: {
+                        id: { type: "number" },
+                        account: { type: "string" },
+                        name: { type: "string" },
+                        publisher: { type: "string" },
+                        impressions: { type: "number" },
+                        clicks: { type: "number" },
+                        cost: { type: "number" }
+                    }
+                }
+            },
+            pageSize: 50
+        },
+        sortable: true,
+        pageable: true,
+
+        columns: [
+            {
+                field: "id",
+                title: "Id",
+                filterable: false
+            },
+            {
+                field: "name",
+                title: "Name"
+            },
+            {
+                field: "publisher",
+                title: "Publisher"
+            },
+            {
+                field: "active",
+                title: "Active"
+            },
+            {
+                field: "startDate",
+                title: "Start Date"
+            },
+            {
+                field: "impressions",
+                title: "Impressions",
+                attributes: { "class": "k-align-right"}
+            },
+            {
+                field: "clicks",
+                title: "Clicks",
+                attributes: { "class": "k-align-right"}
+            },
+            {
+                field: "ctr",
+                title: "CTR",
+                attributes: { "class": "k-align-right"}
+            },
+            {
+                field: "cpc",
+                title: "CPC",
+                format: "{0:c}",
+                attributes: { "class": "k-align-right"}
+            },
+            {
+                field: "cost",
+                title: "Cost",
+                format: "{0:c}",
+                attributes: { "class": "k-align-right"}
+            },
+            {
+                field: "revenue",
+                title: "Revenue",
+                format: "{0:c}",
+                attributes: { "class": "k-align-right"}
+            }
         ]
     };
 
