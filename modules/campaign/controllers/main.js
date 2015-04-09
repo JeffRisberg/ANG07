@@ -56,9 +56,9 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
                     }
                 }
             },
-            pageSize: 50
+            pageSize: 12
         },
-        height: 550,
+        height: 450,
         scrollable: true,
         sortable: true,
         filterable: false,
@@ -79,8 +79,8 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
             },
             {
                 field: "name",
-                title: "Name"
-            },
+                title: "Name",
+                template: "<a ng-click=editCampaign(dataItem.id)>#: data.name#</a>" },
             {
                 field: "publisher",
                 title: "Publisher"
@@ -93,7 +93,7 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
                 field: "startDate",
                 title: "Start Date",
                 type: "date",
-                format:"{0:MM-dd-yyyy}"
+                format: "{0:MM-dd-yyyy}"
             },
             {
                 field: "impressions",
