@@ -95,3 +95,51 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state(adGroupEdit);
     $stateProvider.state(adGroupAdd);
 });
+
+
+myApp.directive('ang07Grid', [function () {
+    return {
+        restrict: 'AE',
+        replace: true,
+        scope: {
+            itemsSource: '=',
+            columnLayout: '=',
+            itemFormatter: '=',
+            selectionMode: '@',
+            headersVisibility: '@'
+        },
+        template: '<div/>',
+
+        link: function (scope, element, attrs) {
+
+            // create flexgrid
+            var flex = new wijmo.grid.FlexGrid(element[0]);
+
+            // apply column layout
+            if (scope.columnLayout) {
+                var cols = scope.columnLayout;
+                flex.autoGenerateColumns = false;
+                for (var i = 0; i < cols.length; i++) {
+                    flex.columns.push(new wijmo.grid.Column(cols[i]));
+                }
+            }
+
+            // apply itemSource
+            if (scope.itemsSource) {
+                flex.itemsSource = scope.itemsSource;
+            }
+
+            if (scope.selectionMode) {
+                flex.selectionMode = scope.selectionMode;
+            }
+
+            if (scope.headersVisibility) {
+                flex.headersVisibility = scope.headersVisibility;
+            }
+
+            if (scope.itemFormatter) {
+                flex.itemFormatter = scope.itemFormatter;
+            }
+        }
+    }
+}]);

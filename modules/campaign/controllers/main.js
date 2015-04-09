@@ -34,7 +34,7 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
 
     $scope.campaigns = dataList;
 
-    $scope.mainGridOptions = {
+    $scope.campaignGridOptions = {
         dataSource: {
             data: dataList,
             schema: {
@@ -58,8 +58,14 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
             },
             pageSize: 50
         },
+        height: 550,
+        scrollable: true,
         sortable: true,
-        pageable: true,
+        filterable: false,
+        pageable: {
+            input: true,
+            numeric: false
+        },
 
         columns: [
             {
@@ -85,7 +91,9 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
             },
             {
                 field: "startDate",
-                title: "Start Date"
+                title: "Start Date",
+                type: "date",
+                format:"{0:MM-dd-yyyy}"
             },
             {
                 field: "impressions",
