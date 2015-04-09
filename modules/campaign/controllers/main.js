@@ -56,7 +56,7 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
                     }
                 }
             },
-            pageSize: 12
+            pageSize: 10
         },
         height: 400,
         scrollable: true,
