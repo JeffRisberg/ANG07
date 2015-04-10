@@ -1,7 +1,10 @@
-myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) {
+myApp.controller("CampaignCtrl", ['$scope', '$rootScope', '$state', 'flash', function ($scope, $rootScope, $state, flash) {
+
+    $scope.flash = flash;
 
     var accounts = ['Google', 'Google', 'Bing'];
     var names = "Travel:Cruises,Travel:Hotel,Travel:Other,Car:Ford,Car:Chevrolet,Car:Kia,Car:Honda,Fall Promotion,Winter Promotion".split(',');
+    var statuses = "Active,Disabled,Ended,Active,Active".split(',');
 
     var dataList = [];
 
@@ -9,6 +12,7 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
         var account = accounts[Math.floor(Math.random() * accounts.length)];
         var publisher = account + "Test";
         var name = names[i % names.length];
+        var status = statuses[Math.floor(Math.random() * statuses.length)];
 
         var impressions = Math.floor(Math.random() * 10000);
         var ctr = 0.05 + 0.05 * Math.random();
@@ -22,7 +26,7 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
             publisher: publisher,
             name: name,
             startDate: new Date(2015, i % 12, 1 + (i % 28)),
-            active: i % 4 == 0,
+            status: status,
             impressions: impressions,
             clicks: clicks,
             ctr: ctr,
@@ -45,7 +49,7 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
                         account: { type: "string" },
                         publisher: { type: "string" },
                         name: { type: "string" },
-                        active: { type: "boolean" },
+                        status: { type: "string" },
                         startDate: { type: "date" },
                         impressions: { type: "number" },
                         clicks: { type: "number" },
@@ -86,8 +90,8 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
                 title: "Publisher"
             },
             {
-                field: "active",
-                title: "Active"
+                field: "status",
+                title: "Status"
             },
             {
                 field: "startDate",
@@ -132,22 +136,30 @@ myApp.controller("CampaignCtrl", ['$scope', '$state', function ($scope, $state) 
     };
 
     $scope.editCampaign = function (id) {
-        $scope.campaign = null;
+        $state.go("campaign.edit", {id: id});
+    };
 
-        // Find the campaign in the collection
-        for (var i = 0; i < $scope.campaigns.length; i++) {
-            var campaign = $scope.campaigns[i];
+    $rootScope.$on('$stateChangeStart', function(e, toState, toParams) {
+        if (toState.name === 'campaign.edit') {
+            $scope.campaign = null;
 
-            if (campaign.id == id) {
-                $scope.campaign = campaign;
-                break;
+            // Find the campaign in the collection
+            for (var i = 0; i < $scope.campaigns.length; i++) {
+                var campaign = $scope.campaigns[i];
+
+                if (campaign.id == toParams.id) {
+                    $scope.campaign = campaign;
+                    break;
+                }
+            }
+
+            if ($scope.campaign == null) {
+                flash.setMessage("Invalid Campaign");
+                e.preventDefault();
+                $state.go("campaign.list");
             }
         }
-
-        if ($scope.campaign !== null) {
-            $state.go("campaign.edit");
-        }
-    };
+    });
 
     $scope.addCampaign = function () {
         $scope.campaigns.push({name: $scope.addName});

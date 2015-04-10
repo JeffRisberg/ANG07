@@ -1,4 +1,6 @@
-myApp.controller('AdGroupCtrl', ['$scope', '$interpolate', '$compile', '$state', function ($scope, $interpolate, $compile, $state) {
+myApp.controller('AdGroupCtrl', ['$scope', '$rootScope', '$state', 'flash', '$interpolate', '$compile', function ($scope, $rootScope, $state, flash, $interpolate, $compile) {
+
+    $scope.flash = flash;
 
     var accounts = ['Google', 'Google', 'Bing'];
     var campaigns = "Travel:Cruises,Travel:Hotel,Travel:Other,Car:Ford,Car:Chevrolet,Car:Kia,Car:Honda,Fall Promotion,Winter Promotion".split(',');
@@ -76,21 +78,29 @@ myApp.controller('AdGroupCtrl', ['$scope', '$interpolate', '$compile', '$state',
     };
 
     $scope.editAdGroup = function (id) {
-        $scope.adGroup = null;
+        $state.go("adGroup.edit", {id: id});
+    };
 
-        // Find the adGroup in the collection
-        for (var i = 0; i < $scope.adGroupCollection.items.length; i++) {
-            var adGroup = $scope.adGroupCollection.items[i];
+    $rootScope.$on('$stateChangeStart', function (e, toState, toParams) {
+        if (toState.name === 'adGroup.edit') {
+            $scope.adGroup = null;
 
-            if (adGroup.id == id) {
-                $scope.adGroup = adGroup;
-                break;
+            // Find the adGroup in the collection
+            for (var i = 0; i < $scope.adGroupCollection.items.length; i++) {
+                var adGroup = $scope.adGroupCollection.items[i];
+
+                if (adGroup.id == toParams.id) {
+                    $scope.adGroup = adGroup;
+                    break;
+                }
+            }
+
+            if ($scope.adGroup == null) {
+                flash.setMessage("Invalid AdGroup");
+                e.preventDefault();
+                $state.go("adGroup.list");
             }
         }
-
-        if ($scope.adGroup !== null) {
-            $state.go("adGroup.edit");
-        }
-    };
+    });
 }]);
 

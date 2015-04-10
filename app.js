@@ -27,7 +27,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     };
     var accountEdit = {
         name: 'account.edit',
-        url: '/edit',
+        url: '/edit/:id',
         templateUrl: 'modules/account/templates/edit.html'
     };
     var accountAdd = {
@@ -48,7 +48,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     };
     var campaignEdit = {
         name: 'campaign.edit',
-        url: '/edit',
+        url: '/edit/:id',
         templateUrl: 'modules/campaign/templates/edit.html'
     };
     var campaignAdd = {
@@ -69,7 +69,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     };
     var adGroupEdit = {
         name: 'adGroup.edit',
-        url: '/edit',
+        url: '/edit/:id',
         templateUrl: 'modules/adGroup/templates/edit.html'
     };
     var adGroupAdd = {
@@ -142,4 +142,23 @@ myApp.directive('ang07Grid', [function () {
             }
         }
     }
+}]);
+
+myApp.factory("flash", ['$rootScope', function ($rootScope) {
+    var queue = [];
+    var currentMessage = "";
+
+    $rootScope.$on("$stateChangeSuccess", function () {
+        currentMessage = queue.shift() || "";
+    });
+
+    return {
+        setMessage: function (message) {
+            queue.push(message);
+        },
+
+        getMessage: function () {
+            return currentMessage;
+        }
+    };
 }]);
