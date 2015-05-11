@@ -4,7 +4,7 @@
 
 var myApp = angular.module('ang07', ['ngSanitize', 'ui.utils', 'ui.router', 'ui.bootstrap', 'ui.select', 'ngGrid', 'wj', 'kendo.directives']);
 
-myApp.config(function ($stateProvider, $urlRouterProvider) {
+myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
     // for any unmatched url, redirect to home
     $urlRouterProvider.otherwise("/");
@@ -94,7 +94,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state(adGroupList);
     $stateProvider.state(adGroupEdit);
     $stateProvider.state(adGroupAdd);
-});
+}]);
 
 
 myApp.directive('ang07Grid', [function () {
