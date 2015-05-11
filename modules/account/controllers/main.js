@@ -4,7 +4,7 @@ myApp.controller('AccountCtrl', ['$scope', '$rootScope', '$state', 'flash', func
 
     var names = "Paychex,Endurance,LearCapital,Dafiti,Atlassian,ShoeDazzle,Glasses.com,ZonaJobs.com,Alpha,Beta,Gamma,Delta,Zeta".split(',');
     var publishers = ['Google', 'Google', 'Google', 'Bing'];
-    var status = statuses[Math.floor(Math.random() * statuses.length)];
+    var statuses = "Active,Disabled,Ended,Active,Active".split(',');
 
     var dataList = [];
 
