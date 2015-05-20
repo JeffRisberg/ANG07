@@ -27,6 +27,7 @@ myApp.controller('AccountCtrl', ['$scope', '$rootScope', '$state', 'flash', '$in
                 id: i + 1,
                 name: name,
                 publisher: publisher,
+                status: "Active",
                 impressions: impressions,
                 clicks: clicks,
                 ctr: ctr,
@@ -43,19 +44,23 @@ myApp.controller('AccountCtrl', ['$scope', '$rootScope', '$state', 'flash', '$in
         $scope.accountCollection = new wijmo.collections.CollectionView(dataList);
         $scope.accountCollection.pageSize = 10;
 
-        $scope.accountColumnLayout = [
-            {header: "Id", binding: "id"},
-            {header: "Name", binding: "name"},
-            {header: "Publisher", binding: "publisher"},
-            {header: "Impressions", binding: "impressions", format: 'n0'},
-            {header: "Clicks", binding: "clicks", format: 'n0'},
-            {header: "CTR", binding: "ctr", format: 'p2'},
-            {header: "CPC", binding: "cpc", format: "c"},
-            {header: "CPM", binding: "cpm", format: "c"},
-            {header: "Cost", binding: "cost", format: "c"},
-            {header: "Revenue", binding: "revenue", format: "c"},
-            {header: "Margin", binding: "margin", format: "c"}
-        ];
+        // Get the column layout for this module if defined, or build it from all dimensions and metrics
+        $scope.moduleKey = 'account';
+
+        if ($rootScope.moduleConfigs[$scope.moduleKey] != null) {
+            $scope.columnLayout = $rootScope.moduleConfigs[$scope.moduleKey];
+        }
+        else {
+            $scope.columnLayout = [];
+            $rootScope.dimensions.forEach(function (column) {
+                delete column['$$hashKey'];
+                $scope.columnLayout.push(column);
+            });
+            $rootScope.metrics.forEach(function (column) {
+                delete column['$$hashKey'];
+                $scope.columnLayout.push(column);
+            });
+        }
 
         $scope.accountItemFormatter = function (panel, r, c, cell) {
             if (panel.cellType == wijmo.grid.CellType.Cell) {

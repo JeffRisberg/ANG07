@@ -17,6 +17,8 @@ myApp.controller("CampaignCtrl", ['$scope', '$rootScope', '$state', 'flash', '$i
 
             var impressions = Math.floor(Math.random() * 10000);
             var ctr = 0.05 + 0.05 * Math.random();
+            var cpc = 0.95 + 1.4 * Math.random();
+            var cpm = 0.15 + 0.90 * Math.random();
             var clicks = Math.floor(impressions * ctr);
             var cost = Math.random() * 45.0;
             var revenue = cost * 10.0 * Math.random();
@@ -32,7 +34,8 @@ myApp.controller("CampaignCtrl", ['$scope', '$rootScope', '$state', 'flash', '$i
                 impressions: impressions,
                 clicks: clicks,
                 ctr: ctr,
-                cpc: 0.03,
+                cpc: cpc,
+                cpm: cpm,
                 cost: cost,
                 revenue: revenue,
                 margin: margin
@@ -44,22 +47,23 @@ myApp.controller("CampaignCtrl", ['$scope', '$rootScope', '$state', 'flash', '$i
         $scope.campaignCollection = new wijmo.collections.CollectionView(dataList);
         $scope.campaignCollection.pageSize = 10;
 
-        $scope.campaignColumnLayout = [
-            {header: "Id", binding: "id"},
-            {header: "Name", binding: "name"},
-            {header: "Account", binding: "account"},
-            {header: "Publisher", binding: "publisher"},
-            {header: "Status", binding: "status"},
-            {header: "Start Date", binding: "startDate"},
-            {header: "Impressions", binding: "impressions", format: 'n0'},
-            {header: "Clicks", binding: "clicks", format: 'n0'},
-            {header: "CTR", binding: "ctr", format: 'p2'},
-            {header: "CPC", binding: "cpc", format: "c"},
-            {header: "CPM", binding: "cpm", format: "c"},
-            {header: "Cost", binding: "cost", format: "c"},
-            {header: "Revenue", binding: "revenue", format: "c"},
-            {header: "Margin", binding: "margin", format: "c"}
-        ];
+        // Get the column layout for this module if defined, or build it from all dimensions and metrics
+        $scope.moduleKey = 'campaign';
+
+        if ($rootScope.moduleConfigs[$scope.moduleKey] != null) {
+            $scope.columnLayout = $rootScope.moduleConfigs[$scope.moduleKey];
+        }
+        else {
+            $scope.columnLayout = [];
+            $rootScope.dimensions.forEach(function (column) {
+                delete column['$$hashKey'];
+                $scope.columnLayout.push(column);
+            });
+            $rootScope.metrics.forEach(function (column) {
+                delete column['$$hashKey'];
+                $scope.columnLayout.push(column);
+            });
+        }
 
         $scope.campaignItemFormatter = function (panel, r, c, cell) {
             if (panel.cellType == wijmo.grid.CellType.Cell) {

@@ -26,6 +26,13 @@ myApp.config(['$stateProvider', '$stickyStateProvider', '$urlRouterProvider',
         });
 
         states.push({
+            name: 'editColumns',
+            url: "/editColumns/:moduleKey",
+            templateUrl: "modules/common/editColumns.html",
+            data: {pageTitle: 'Edit Columns'}
+        });
+
+        states.push({
             name: 'account',
             url: '/account',
             templateUrl: 'modules/account/templates/main.html'
@@ -44,12 +51,6 @@ myApp.config(['$stateProvider', '$stickyStateProvider', '$urlRouterProvider',
             name: 'account.add',
             url: '/add',
             templateUrl: 'modules/account/templates/add.html'
-        });
-        states.push({
-            name: 'account.editColumns',
-            url: "/editColumns/:moduleKey",
-            templateUrl: "modules/common/editColumns.html",
-            data: {pageTitle: 'Edit Columns'}
         });
 
         states.push({
@@ -72,12 +73,6 @@ myApp.config(['$stateProvider', '$stickyStateProvider', '$urlRouterProvider',
             url: '/add',
             templateUrl: 'modules/campaign/templates/add.html'
         });
-        states.push({
-            name: 'campaign.editColumns',
-            url: "/editColumns/:moduleKey",
-            templateUrl: "modules/common/editColumns.html",
-            data: {pageTitle: 'Edit Columns'}
-        });
 
         states.push({
             name: 'adGroup',
@@ -98,12 +93,6 @@ myApp.config(['$stateProvider', '$stickyStateProvider', '$urlRouterProvider',
             name: 'adGroup.add',
             url: '/add',
             templateUrl: 'modules/adGroup/templates/add.html'
-        });
-        states.push({
-            name: 'adGroup.editColumns',
-            url: "/editColumns/:moduleKey",
-            templateUrl: "modules/common/editColumns.html",
-            data: {pageTitle: 'Edit Columns'}
         });
 
         angular.forEach(states, function (state) {

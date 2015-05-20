@@ -19,7 +19,7 @@
         <button class="btn btn-success disabled">C</button>
         <button class="btn btn-info disabled">C</button>
         <button class="btn btn-warning disabled">C</button>
-        <button class="btn btn-default" ui-sref="account.editColumns({moduleKey: 'account'})">Edit Columns</button>
+        <button class="btn btn-default" ui-sref="editColumns({moduleKey: 'account'})">Edit Columns</button>
         <button class="btn btn-default">Download</button>
         <button class="btn btn-default">Upload</button>
         <button class="btn btn-default">C</button>
@@ -35,7 +35,7 @@
     <ang07-grid id="accountList"
                 item-formatter="accountItemFormatter"
                 items-source="accountCollection"
-                column-layout="accountColumnLayout"
+                column-layout="columnLayout"
                 selection-mode="None"
                 headers-visibility="Column">
     </ang07-grid>

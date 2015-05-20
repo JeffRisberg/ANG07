@@ -3,7 +3,6 @@ myApp.controller('editColumnsCtrl', ['$scope', '$rootScope', '$state', '$statePa
 
         var moduleKey = $stateParams.moduleKey;
 
-        console.log(moduleKey);
         $scope.moduleKey = moduleKey;
 
         // Determine the initial set of selected columns from the stored module configs
