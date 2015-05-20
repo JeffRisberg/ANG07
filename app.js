@@ -8,6 +8,7 @@ var myApp = angular.module('ang07', [
     'ui.router',
     'ui.bootstrap',
     'ui.select',
+    'dndLists', // Drag and Drop
     'wj',
     'ct.ui.router.extras.sticky']);
 

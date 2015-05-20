@@ -1,10 +1,10 @@
-myApp.controller('AdGroupCtrl', ['$scope', '$rootScope', '$state', 'flash', '$interpolate', '$compile',
-    function ($scope, $rootScope, $state, flash, $interpolate, $compile) {
+myApp.controller('AdGroupCtrl', ['$scope', '$rootScope', '$state', 'flash', 'uiStateService', '$interpolate', '$compile',
+    function ($scope, $rootScope, $state, flash, uiStateService, $interpolate, $compile) {
 
         $scope.flash = flash;
 
-        console.log($scope.blarg);
-        $scope.blarg = "AAAA";
+        console.log($scope.preservedState);
+        $scope.preservedState = "This is preserved state";
 
         var accounts = ['Google', 'Google', 'Bing'];
         var campaigns = "Travel:Cruises,Travel:Hotel,Travel:Other,Car:Ford,Car:Chevrolet,Car:Kia,Car:Honda,Fall Promotion,Winter Promotion".split(',');
@@ -55,20 +55,7 @@ myApp.controller('AdGroupCtrl', ['$scope', '$rootScope', '$state', 'flash', '$in
         // Get the column layout for this module if defined, or build it from all dimensions and metrics
         $scope.moduleKey = 'adGroup';
 
-        if ($rootScope.moduleConfigs[$scope.moduleKey] != null) {
-            $scope.columnLayout = $rootScope.moduleConfigs[$scope.moduleKey];
-        }
-        else {
-            $scope.columnLayout = [];
-            $rootScope.dimensions.forEach(function (column) {
-                delete column['$$hashKey'];
-                $scope.columnLayout.push(column);
-            });
-            $rootScope.metrics.forEach(function (column) {
-                delete column['$$hashKey'];
-                $scope.columnLayout.push(column);
-            });
-        }
+        $scope.columnLayout = uiStateService.getColumns($scope.moduleKey);
 
         $scope.adGroupItemFormatter = function (panel, r, c, cell) {
             if (panel.cellType == wijmo.grid.CellType.Cell) {
