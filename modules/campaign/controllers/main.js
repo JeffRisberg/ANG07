@@ -3,6 +3,9 @@ myApp.controller("CampaignCtrl", ['$scope', '$rootScope', '$state', 'flash', '$i
 
         $scope.flash = flash;
 
+        console.log($scope.blarg);
+        $scope.blarg = "AAAA";
+
         var accounts = ['Google', 'Google', 'Bing'];
         var names = "Travel:Cruises,Travel:Hotel,Travel:Other,Car:Ford,Car:Chevrolet,Car:Kia,Car:Honda,Fall Promotion,Winter Promotion".split(',');
         var statuses = "Active,Disabled,Ended,Active,Active".split(',');

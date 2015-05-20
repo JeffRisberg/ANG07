@@ -3,6 +3,9 @@ myApp.controller('AccountCtrl', ['$scope', '$rootScope', '$state', 'flash', '$in
 
         $scope.flash = flash;
 
+        console.log($scope.blarg);
+        $scope.blarg = "AAAA";
+
         var names = "Paychex,Endurance,LearCapital,Dafiti,Atlassian,ShoeDazzle,Glasses.com,ZonaJobs.com,Alpha,Beta,Gamma,Delta,Zeta".split(',');
         var publishers = ['Google', 'Google', 'Google', 'Bing'];
         var statuses = "Active,Disabled,Ended,Active,Active".split(',');

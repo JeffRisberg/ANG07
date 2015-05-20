@@ -3,6 +3,9 @@ myApp.controller('AdGroupCtrl', ['$scope', '$rootScope', '$state', 'flash', '$in
 
         $scope.flash = flash;
 
+        console.log($scope.blarg);
+        $scope.blarg = "AAAA";
+
         var accounts = ['Google', 'Google', 'Bing'];
         var campaigns = "Travel:Cruises,Travel:Hotel,Travel:Other,Car:Ford,Car:Chevrolet,Car:Kia,Car:Honda,Fall Promotion,Winter Promotion".split(',');
         var names = "Group1,Group2,Test Group,Basis,New Group,TestGroup2".split(',');

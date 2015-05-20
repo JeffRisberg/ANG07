@@ -40,7 +40,8 @@ myApp.config(['$stateProvider', '$stickyStateProvider', '$urlRouterProvider',
         states.push({
             name: 'account.list',
             url: '/list',
-            templateUrl: 'modules/account/templates/list.html'
+            templateUrl: 'modules/account/templates/list.html',
+            sticky: true
         });
         states.push({
             name: 'account.edit',
