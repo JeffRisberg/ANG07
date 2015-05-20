@@ -8,102 +8,131 @@ var myApp = angular.module('ang07', [
     'ui.router',
     'ui.bootstrap',
     'ui.select',
-    'ngGrid',
     'wj',
-    'kendo.directives']);
+    'ct.ui.router.extras.sticky']);
 
-myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+myApp.config(['$stateProvider', '$stickyStateProvider', '$urlRouterProvider',
+    function ($stateProvider, $stickyStateProvider, $urlRouterProvider) {
 
-    // for any unmatched url, redirect to home
-    $urlRouterProvider.otherwise("/");
+        // for any unmatched url, redirect to home
+        $urlRouterProvider.otherwise("/");
 
-    var home = {
-        name: 'home',
-        url: '/',
-        templateUrl: 'modules/home/template.html'
-    };
+        var states = [];
 
-    var account = {
-        name: 'account',
-        url: '/account',
-        templateUrl: 'modules/account/templates/main.html'
-    };
-    var accountList = {
-        name: 'account.list',
-        url: '/list',
-        templateUrl: 'modules/account/templates/list.html'
-    };
-    var accountEdit = {
-        name: 'account.edit',
-        url: '/edit/:id',
-        templateUrl: 'modules/account/templates/edit.html'
-    };
-    var accountAdd = {
-        name: 'account.add',
-        url: '/add',
-        templateUrl: 'modules/account/templates/add.html'
-    };
+        states.push({
+            name: 'home',
+            url: '/',
+            templateUrl: 'modules/home/template.html'
+        });
 
-    var campaign = {
-        name: 'campaign',
-        url: '/campaign',
-        templateUrl: 'modules/campaign/templates/main.html'
-    };
-    var campaignList = {
-        name: 'campaign.list',
-        url: '/list',
-        templateUrl: 'modules/campaign/templates/list.html'
-    };
-    var campaignEdit = {
-        name: 'campaign.edit',
-        url: '/edit/:id',
-        templateUrl: 'modules/campaign/templates/edit.html'
-    };
-    var campaignAdd = {
-        name: 'campaign.add',
-        url: '/add',
-        templateUrl: 'modules/campaign/templates/add.html'
-    };
+        states.push({
+            name: 'account',
+            url: '/account',
+            templateUrl: 'modules/account/templates/main.html'
+        });
+        states.push({
+            name: 'account.list',
+            url: '/list',
+            templateUrl: 'modules/account/templates/list.html'
+        });
+        states.push({
+            name: 'account.edit',
+            url: '/edit/:id',
+            templateUrl: 'modules/account/templates/edit.html'
+        });
+        states.push({
+            name: 'account.add',
+            url: '/add',
+            templateUrl: 'modules/account/templates/add.html'
+        });
+        states.push({
+            name: 'account.editColumns',
+            url: "/editColumns/:moduleKey",
+            templateUrl: "modules/common/editColumns.html",
+            data: {pageTitle: 'Edit Columns'}
+        });
 
-    var adGroup = {
-        name: 'adGroup',
-        url: '/adGroup',
-        templateUrl: 'modules/adGroup/templates/main.html'
-    };
-    var adGroupList = {
-        name: 'adGroup.list',
-        url: '/list',
-        templateUrl: 'modules/adGroup/templates/list.html'
-    };
-    var adGroupEdit = {
-        name: 'adGroup.edit',
-        url: '/edit/:id',
-        templateUrl: 'modules/adGroup/templates/edit.html'
-    };
-    var adGroupAdd = {
-        name: 'adGroup.add',
-        url: '/add',
-        templateUrl: 'modules/adGroup/templates/add.html'
-    };
+        states.push({
+            name: 'campaign',
+            url: '/campaign',
+            templateUrl: 'modules/campaign/templates/main.html'
+        });
+        states.push({
+            name: 'campaign.list',
+            url: '/list',
+            templateUrl: 'modules/campaign/templates/list.html'
+        });
+        states.push({
+            name: 'campaign.edit',
+            url: '/edit/:id',
+            templateUrl: 'modules/campaign/templates/edit.html'
+        });
+        states.push({
+            name: 'campaign.add',
+            url: '/add',
+            templateUrl: 'modules/campaign/templates/add.html'
+        });
+        states.push({
+            name: 'campaign.editColumns',
+            url: "/editColumns/:moduleKey",
+            templateUrl: "modules/common/editColumns.html",
+            data: {pageTitle: 'Edit Columns'}
+        });
 
-    $stateProvider.state(home);
+        states.push({
+            name: 'adGroup',
+            url: '/adGroup',
+            templateUrl: 'modules/adGroup/templates/main.html'
+        });
+        states.push({
+            name: 'adGroup.list',
+            url: '/list',
+            templateUrl: 'modules/adGroup/templates/list.html'
+        });
+        states.push({
+            name: 'adGroup.edit',
+            url: '/edit/:id',
+            templateUrl: 'modules/adGroup/templates/edit.html'
+        });
+        states.push({
+            name: 'adGroup.add',
+            url: '/add',
+            templateUrl: 'modules/adGroup/templates/add.html'
+        });
+        states.push({
+            name: 'adGroup.editColumns',
+            url: "/editColumns/:moduleKey",
+            templateUrl: "modules/common/editColumns.html",
+            data: {pageTitle: 'Edit Columns'}
+        });
 
-    $stateProvider.state(account);
-    $stateProvider.state(accountList);
-    $stateProvider.state(accountEdit);
-    $stateProvider.state(accountAdd);
+        angular.forEach(states, function (state) {
+            $stateProvider.state(state);
+        });
+    }]);
 
-    $stateProvider.state(campaign);
-    $stateProvider.state(campaignList);
-    $stateProvider.state(campaignEdit);
-    $stateProvider.state(campaignAdd);
+myApp.run(['$rootScope', function ($rootScope) {
 
-    $stateProvider.state(adGroup);
-    $stateProvider.state(adGroupList);
-    $stateProvider.state(adGroupEdit);
-    $stateProvider.state(adGroupAdd);
+    // This will hold the selected columns for each module, organized by moduleKey
+    $rootScope.moduleConfigs = {};
+
+    $rootScope.dimensions = [
+        {binding: "name", header: "Name", align: "left"},
+        {binding: 'account', header: 'Account', align: "left"},
+        {binding: 'status', header: 'Status'}
+    ];
+
+    $rootScope.metrics = [
+        {binding: 'impressions', header: 'Impressions', format: 'n0'},
+        {binding: 'clicks', header: 'Clicks', format: 'n0'},
+        {binding: 'ctr', header: 'CTR', format: 'p2'},
+        {binding: 'cpc', header: 'CPC', format: "c"},
+        {binding: 'cpm', header: 'CPM', format: "c"},
+        {binding: 'cost', header: 'Cost', format: "c"},
+        {binding: 'revenue', header: 'Revenue', format: "c"},
+        {binding: 'margin', header: 'Margin', format: "c"}
+    ];
 }]);
-
 
 myApp.directive('ang07Grid', [function () {
     return {

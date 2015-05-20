@@ -1,111 +1,110 @@
-myApp.controller('AccountCtrl', ['$scope', '$rootScope', '$state', 'flash', function ($scope, $rootScope, $state, flash) {
+myApp.controller('AccountCtrl', ['$scope', '$rootScope', '$state', 'flash', '$interpolate', '$compile',
+    function ($scope, $rootScope, $state, flash, $interpolate, $compile) {
 
-    $scope.flash = flash;
+        $scope.flash = flash;
 
-    var names = "Paychex,Endurance,LearCapital,Dafiti,Atlassian,ShoeDazzle,Glasses.com,ZonaJobs.com,Alpha,Beta,Gamma,Delta,Zeta".split(',');
-    var publishers = ['Google', 'Google', 'Google', 'Bing'];
-    var statuses = "Active,Disabled,Ended,Active,Active".split(',');
+        var names = "Paychex,Endurance,LearCapital,Dafiti,Atlassian,ShoeDazzle,Glasses.com,ZonaJobs.com,Alpha,Beta,Gamma,Delta,Zeta".split(',');
+        var publishers = ['Google', 'Google', 'Google', 'Bing'];
+        var statuses = "Active,Disabled,Ended,Active,Active".split(',');
 
-    var dataList = [];
+        var dataList = [];
 
-    for (var i = 0; i < 100; i++) {
-        var name = names[i % names.length];
-        var publisher = publishers[i % publishers.length];
-        var status = statuses[Math.floor(Math.random() * statuses.length)];
-        var accountId = "" + Math.floor(Math.random() * 100000);
+        for (var i = 0; i < 100; i++) {
+            var name = names[i % names.length];
+            var publisher = publishers[i % publishers.length];
+            var status = statuses[Math.floor(Math.random() * statuses.length)];
 
-        var impressions = Math.floor(Math.random() * 10000);
-        var ctr = 0.05 + 0.05 * Math.random();
-        var clicks = Math.floor(impressions * ctr);
-        var cpm = 0.15 + 0.90 * Math.random();
-        var cpc = 0.05 + 0.67 * Math.random();
-        var cost = Math.random() * 45.0;
-        var revenue = cost * 10.0 * Math.random();
-        var testM = 0.95 + 5.0 * Math.random();
+            var impressions = Math.floor(Math.random() * 10000);
+            var ctr = 0.05 + 0.05 * Math.random();
+            var clicks = Math.floor(impressions * ctr);
+            var cpm = 0.15 + 0.90 * Math.random();
+            var cpc = 0.05 + 0.67 * Math.random();
+            var cost = Math.random() * 45.0;
+            var revenue = cost * 10.0 * Math.random();
+            var margin = cost * 2.0 * Math.random();
 
-        dataList.push({
-            id: i + 1,
-            name: name,
-            publisher: publisher,
-            accountId: accountId,
-            impressions: impressions,
-            clicks: clicks,
-            ctr: ctr,
-            cpm: cpm,
-            cpc: cpc,
-            cost: cost,
-            revenue: revenue,
-            testM: testM
-        })
-    }
+            dataList.push({
+                id: i + 1,
+                name: name,
+                publisher: publisher,
+                impressions: impressions,
+                clicks: clicks,
+                ctr: ctr,
+                cpm: cpm,
+                cpc: cpc,
+                cost: cost,
+                revenue: revenue,
+                margin: margin
+            })
+        }
 
-    $scope.accounts = dataList;
+        $scope.accounts = dataList;
 
-    // define cell templates
-    var integerCT =
-        '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">{{row.entity[col.field] | number : 0}}</div>';
-    var percentageCT =
-        '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">{{100 * row.entity[col.field] | number : 0}} %</div>';
-    var currencyCT =
-        '<div class="ngCellText ng-scope col8 colt8 ngAlignRight">{{row.entity[col.field] | currency}}</div>';
-    var editObjectCT =
-        '<div class="ngCellText ng-scope col8 colt8 ngAlignRight"><a ng-click="editAccount(row.entity[\'id\'])">{{row.entity[col.field]}}</a></div>';
+        $scope.accountCollection = new wijmo.collections.CollectionView(dataList);
+        $scope.accountCollection.pageSize = 10;
 
-    // configure the ng grid
-    $scope.accountGridOptions = {
-        data: 'accounts',
-        enablePaging: true,
-        pagingOptions: {pageSize: [50], pageSize: 50},
-        showFooter: true,
-        showSelectionCheckbox: true,
-        selectWithCheckboxOnly: true,
-        columnDefs: [
-            {field: 'id', displayName: 'Id'},
-            {field: 'name', displayName: 'Name', cellTemplate: editObjectCT},
-            {field: 'publisher', displayName: 'Publisher'},
-            {field: 'accountId', displayName: 'Account Id'},
-            {field: 'impressions', displayName: 'Impressions', headerClass: 'ngAlignRight', cellTemplate: integerCT},
-            {field: 'clicks', displayName: 'Clicks', headerClass: 'ngAlignRight', cellTemplate: integerCT},
-            {field: 'ctr', displayName: 'CTR', headerClass: 'ngAlignRight', cellTemplate: percentageCT},
-            {field: 'cpc', displayName: 'CPC', headerClass: 'ngAlignRight', cellTemplate: currencyCT},
-            {field: 'cpm', displayName: 'CPM', headerClass: 'ngAlignRight', cellTemplate: currencyCT},
-            {field: 'cost', displayName: 'Cost', headerClass: 'ngAlignRight', cellTemplate: currencyCT},
-            {field: 'revenue', displayName: 'Revenue', headerClass: 'ngAlignRight', cellTemplate: currencyCT},
-            {field: 'testM', displayName: 'TestM', headerClass: 'ngAlignRight', cellTemplate: currencyCT}
-        ]
-    };
+        $scope.accountColumnLayout = [
+            {header: "Id", binding: "id"},
+            {header: "Name", binding: "name"},
+            {header: "Publisher", binding: "publisher"},
+            {header: "Impressions", binding: "impressions", format: 'n0'},
+            {header: "Clicks", binding: "clicks", format: 'n0'},
+            {header: "CTR", binding: "ctr", format: 'p2'},
+            {header: "CPC", binding: "cpc", format: "c"},
+            {header: "CPM", binding: "cpm", format: "c"},
+            {header: "Cost", binding: "cost", format: "c"},
+            {header: "Revenue", binding: "revenue", format: "c"},
+            {header: "Margin", binding: "margin", format: "c"}
+        ];
 
-    $scope.editAccount = function (id) {
-        $state.go("account.edit", {id: id});
-    };
+        $scope.accountItemFormatter = function (panel, r, c, cell) {
+            if (panel.cellType == wijmo.grid.CellType.Cell) {
+                var flex = panel.grid;
 
-    $rootScope.$on('$stateChangeStart', function(e, toState, toParams) {
-        if (toState.name === 'account.edit') {
-            $scope.account = null;
+                if (c == 1) {
+                    $scope.$item = panel.rows[r].dataItem;
 
-            // Find the account in the collection
-            for (var i = 0; i < $scope.accounts.length; i++) {
-                var account = $scope.accounts[i];
+                    var template = '<a ng-click="editAccount({{$item.id}})">{{$item.name}}</a>';
+                    var innerHTML = $interpolate(template)($scope);
 
-                if (account.id == toParams.id) {
-                    $scope.account = account;
-                    break;
+                    cell.innerHTML = innerHTML;
+
+                    $compile(cell)($scope);
                 }
             }
+        };
 
-            if ($scope.account == null) {
-                flash.setMessage("Invalid Account");
-                e.preventDefault();
-                $state.go("account.list");
+        $scope.editAccount = function (id) {
+            $state.go("account.edit", {id: id});
+        };
+
+        $rootScope.$on('$stateChangeStart', function (e, toState, toParams) {
+            if (toState.name === 'account.edit') {
+                $scope.account = null;
+
+                // Find the account in the collection
+                for (var i = 0; i < $scope.accounts.length; i++) {
+                    var account = $scope.accounts[i];
+
+                    if (account.id == toParams.id) {
+                        $scope.account = account;
+                        break;
+                    }
+                }
+
+                if ($scope.account == null) {
+                    flash.setMessage("Invalid Account");
+                    e.preventDefault();
+                    $state.go("account.list");
+                }
             }
-        }
-    });
+        });
 
-    $scope.addAccount = function () {
-        $scope.accounts.push({title: $scope.addName, quantity: 1, price: $scope.addPrice});
-        $scope.addName = "";
-        $scope.addPrice = "";
+        $scope.addAccount = function () {
+            $scope.accounts.push({title: $scope.addName, quantity: 1, price: $scope.addPrice});
+            $scope.addName = "";
+            $scope.addPrice = "";
 
-        $state.go("account.add");
-    };
-}]);
+            $state.go("account.add");
+        };
+    }]);

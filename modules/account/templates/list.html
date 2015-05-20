@@ -19,7 +19,7 @@
         <button class="btn btn-success disabled">C</button>
         <button class="btn btn-info disabled">C</button>
         <button class="btn btn-warning disabled">C</button>
-        <button class="btn btn-default">Edit Columns</button>
+        <button class="btn btn-default" ui-sref="account.editColumns({moduleKey: 'account'})">Edit Columns</button>
         <button class="btn btn-default">Download</button>
         <button class="btn btn-default">Upload</button>
         <button class="btn btn-default">C</button>
@@ -32,7 +32,30 @@
 </div>
 
 <div>
-    <div class="ng-grid-style" ng-grid="accountGridOptions">
+    <ang07-grid id="accountList"
+                item-formatter="accountItemFormatter"
+                items-source="accountCollection"
+                column-layout="accountColumnLayout"
+                selection-mode="None"
+                headers-visibility="Column">
+    </ang07-grid>
+
+    <div class="btn-group">
+        <button type="button" class="btn" ng-click="accountCollection.moveToFirstPage()">
+            <span class="glyphicon glyphicon-fast-backward"></span>
+        </button>
+        <button type="button" class="btn" ng-click="accountCollection.moveToPreviousPage()">
+            <span class="glyphicon glyphicon-step-backward"></span>
+        </button>
+        <button type="button" class="btn" disabled style="width:100px; height:33px;">
+            {{accountCollection.pageIndex + 1 | number}} / {{accountCollection.pageCount | number}}
+        </button>
+        <button type="button" class="btn" ng-click="accountCollection.moveToNextPage()">
+            <span class="glyphicon glyphicon-step-forward"></span>
+        </button>
+        <button type="button" class="btn" ng-click="accountCollection.moveToLastPage()">
+            <span class="glyphicon glyphicon-fast-forward"></span>
+        </button>
     </div>
 </div>
 
