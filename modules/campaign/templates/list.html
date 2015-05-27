@@ -19,7 +19,7 @@
         <button class="btn btn-success disabled">C</button>
         <button class="btn btn-info disabled">C</button>
         <button class="btn btn-warning disabled">C</button>
-        <button class="btn btn-default">Edit Columns</button>
+        <button class="btn btn-default" ui-sref="editColumns({moduleKey: 'campaign'})">Edit Columns</button>
         <button class="btn btn-default">Download</button>
         <button class="btn btn-default">Upload</button>
         <button class="btn btn-default">C</button>
@@ -31,8 +31,33 @@
     </div>
 </div>
 
-<kendo-grid id="campaignGrid" options="campaignGridOptions">
-</kendo-grid>
+<div>
+    <ang07-grid id="campaignList"
+                item-formatter="campaignItemFormatter"
+                items-source="campaignCollection"
+                column-layout="columnLayout"
+                selection-mode="None"
+                headers-visibility="Column">
+    </ang07-grid>
+
+    <div class="btn-group">
+        <button type="button" class="btn" ng-click="campaignCollection.moveToFirstPage()">
+            <span class="glyphicon glyphicon-fast-backward"></span>
+        </button>
+        <button type="button" class="btn" ng-click="campaignCollection.moveToPreviousPage()">
+            <span class="glyphicon glyphicon-step-backward"></span>
+        </button>
+        <button type="button" class="btn" disabled style="width:100px; height:33px;">
+            {{campaignCollection.pageIndex + 1 | number}} / {{campaignCollection.pageCount | number}}
+        </button>
+        <button type="button" class="btn" ng-click="campaignCollection.moveToNextPage()">
+            <span class="glyphicon glyphicon-step-forward"></span>
+        </button>
+        <button type="button" class="btn" ng-click="campaignCollection.moveToLastPage()">
+            <span class="glyphicon glyphicon-fast-forward"></span>
+        </button>
+    </div>
+</div>
 
 <div style="position: absolute; bottom: 0px; width: 100%">
     <div class="row" style="background: #a3b6c6; padding: 5px;">
