@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="angularjs/plugins/ui-select/select.css">
 
-    <link rel="stylesheet" href="css/wijmo.css" />
+    <link rel="stylesheet" href="css/wijmo.css"/>
 
     <link rel="stylesheet" href="css/styles.css">
 
@@ -47,51 +47,55 @@
 </head>
 <body ng-controller="HomeCtrl">
 
-<div class="mainMenu navbar navbar-fixed-top" role="navigation" style="margin-top: 52px; background: #d6d6d6;">
-    <div class="navbar-inner">
+<div class="container" style="width: 100%">
+    <div class="mainMenu navbar navbar-fixed-top" role="navigation" style="margin-top: 52px; background: #d6d6d6;">
+        <div class="navbar-inner">
 
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li ui-sref-active="active">
-                    <a ui-sref="home">Home</a>
-                </li>
-                <li ng-class="{active: stateIncludes('account')}">
-                    <a ui-sref="account.list">Accounts</a>
-                </li>
-                <li ng-class="{active: stateIncludes('campaign')}">
-                    <a ui-sref="campaign.list">Campaigns</a>
-                </li>
-                <li ng-class="{active: stateIncludes('adGroup')}">
-                    <a ui-sref="adGroup.list">Ad Groups</a>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li ui-sref-active="active">
+                        <a ui-sref="home">Home</a>
+                    </li>
+                    <li ng-class="{active: stateIncludes('account')}">
+                        <a ui-sref="account.list">Accounts</a>
+                    </li>
+                    <li ng-class="{active: stateIncludes('campaign')}">
+                        <a ui-sref="campaign.list">Campaigns</a>
+                    </li>
+                    <li ng-class="{active: stateIncludes('adGroup')}">
+                        <a ui-sref="adGroup.list">Ad Groups</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </div>
+
+    <div class="upperMenu navbar navbar-fixed-top" style="margin-top: 0px; background: #d6d6d6">
+        <div class="navbar-inner">
+
+            <ul class="nav navbar-nav" style="height: 42px">
+                <img src="img/ang07_logo.png" height="42" style="padding-left: 20px; padding-top: 10px;"/>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#"
+                       style="background: #e8e8e8; color: #000; border: 1px solid #a0a0a0; margin-top: 14px; padding-top: 0px; padding-bottom: 5px; height: 25px;"
+                       class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        qa-edit
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Admin</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
-        <!--/.navbar-collapse -->
     </div>
+
+    <div style="margin-top: 90px" ui-view></div>
+
 </div>
-
-<div class="upperMenu navbar navbar-fixed-top" style="margin-top: 0px; background: #d6d6d6">
-    <div class="navbar-inner">
-
-        <ul class="nav navbar-nav" style="height: 42px">
-            <img src="img/ang07_logo.png" height="42" style="padding-left: 20px; padding-top: 10px;"/>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" style="background: #e8e8e8; color: #000; border: 1px solid #a0a0a0; margin-top: 14px; padding-top: 0px; padding-bottom: 5px; height: 25px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    qa-edit
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu" >
-                    <li><a href="#">Admin</a></li>
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div style="margin-top: 90px" ui-view></div>
-
 </body>
 </html>
